@@ -1,58 +1,40 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10%;
+    background-color: white;
+    background-image: url(https://wallpaperaccess.com/full/289465.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+h1 {
+    color: rgba(40, 3, 58, 0.922);
+    font-family: 'Abril Fatface', cursive;
+    font-size: 80px;
+}
+
+ul .list-item, .list-title {
+    list-style: none;
+    padding: 10px;
+    border: 1px solid rgba(128, 128, 128, 0.104);
+    background: white;
+}
 
 body {
-    margin-top: 100px;
-}
-
-.container {
-    display: grid;
-    width: 400px;
-    background-color: #fafafa;
-    border-radius: 5px;
-    box-shadow: -10px 10px 5px -7px rgba(0, 0, 0, 0.14);
-    border: 1px solid grey;
-}
-
-ul {
-    padding: 0;
-    margin-bottom: 0;
-    margin-top: 3px;
-}
-
-ul li {
-    list-style: none;
-    border: 1px solid grey;
-    border-radius: 3px;
-    padding: 5px;
-}
-
-.custom-button {
-    position: absolute;
-    right: 1%;
-    background-color: inherit;
-    border: none;
-    color:#1F1D36;
-    
-}
-
-.custom-button:hover {
-    color: #864879;
-    cursor: pointer;
-    z-index: 5;
-}
-h1 {
-    margin-top: 5px;
-    text-align: center;
-    color: rgb(207, 100, 29);
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 input {
     border: none;
-    background-color: #fafafa;
     width: 100%;
 }
 
-i {
-    color:brown;
-    float:right;
-    margin-top: auto;
+.ocultar {
+    visibility: hidden;
+    margin-left: 5%;
 }
+
+li:hover * {
+    visibility: visible;
