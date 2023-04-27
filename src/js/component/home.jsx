@@ -36,7 +36,7 @@ const ToDoGen = () => {
 	return (
 		<div className="row justify-content-center">
 			<div className="col-4">
-			<h1 className="mt-5 text-center">minimalist to-do list</h1>
+			<h1>ToDo list</h1>
 			<ul className="shadow list-group mt-3">
 				<input 
 					type="text"

@@ -25,8 +25,9 @@ ul li {
 }
 
 h1 {
+    margin-top: 5px;
     text-align: center;
-    color: brown;
+    color: rgb(207, 100, 29);
 }
 
 input {
