@@ -3,7 +3,7 @@ import "../../styles/index.css";
 
 const Home = () => {
 	const [ inputValue, setInputValue] = useState("");
-	const [ toDos, settoDos ] = useState([]);
+	const [ toDo, settoDo ] = useState([]);
 	return (
 		<>
 			<div className="container-fluid row d-flex justify-content-center align-items-center p-2">
@@ -11,25 +11,26 @@ const Home = () => {
 				<ul className="list-container col-12">
 					<li className="list-title">
 						<input 
+			
 						className="text" 
 						onChange={(e) => setInputValue(e.target.value)} 
 						value={inputValue}
 						onKeyPress={(e) => {
 							if (e.key === "Enter") {
-								settoDos(toDos.concat([inputValue]));
+								settoDo(toDo.concat([inputValue]));
 								setInputValue("");
 							}
 						}}
-						placeholder="What do you need to do today?">
+						placeholder="Add Task">
 						</input>
 					</li>
-					{toDos.map((item, index) => (
+					{toDo.map((item, index) => (
 						<li className="list-item">{item}
-						<button className="ocultar btn btn-sm btn-secondary" type="button" onClick={() => settoDos(toDos.filter((item, currentIndex) => index != currentIndex))}><i className="fas fa-trash-alt"></i></button>
+						<button className="invisible btn btn-sm btn-default" type="button" onClick={() => settoDo(toDo.filter((item, currentIndex) => index != currentIndex))}><i className="fas fa-trash-alt"></i></button>
 						</li>
 					))}
 				</ul>
-				<p><em>{toDos.length} item(s) left</em></p>
+				<p><em>{toDo.length} task(s) left</em></p>
 			</div>
 		</>
 	);
