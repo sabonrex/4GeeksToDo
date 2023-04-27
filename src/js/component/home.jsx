@@ -1,50 +1,71 @@
-import React, {useState} from "react";
+import React, { useState, useEffect } from "react";
+import { render } from "react-dom/cjs/react-dom.production.min";
+
+let key = 0
+
+const ToDoGen = () => {
+
+	const [itemList, setItemList] = useState([]) 
+	const [value, setValue] = useState('') 
+	const [vis, setVis] = useState({id: null}) 
 
 
-const Home = () => {
-  const [input, setInput] = useState(""); 
-  const [tareas, setTareas] = useState([]); 
+	const removeItem = (entryId) => {
+		let newList = itemList.map(a => ({...a})) 
+		newList.splice((newList.findIndex(x => x.id === entryId)), 1) 
+		setItemList(newList)
+	}
+	
+	const valueChange = (event) => {
+		setValue(event.target.value)
+	}
 
-  return (
-    <div className="container">
-      <h1>To-Do List</h1>
-      <ul>
-        <li>
-        
-        <input
-  type="text"
-  onChange={(e) => setInput(e.target.value)} 
-  value={input} 
-  onKeyPress={(e) => {
-    if (e.key === "Enter" && input.length >= 3) { 
-      setTareas(tareas.concat(input));
-      setInput(""); 
-    }
-  }}
-  placeholder="Add your to-do"
-/>
+	const taskCounter = () => {
+		let mult = "s"
+		let tasksLeft = "no"
+		let yay = "- hooray!"
 
-        </li>
-        {tareas.map((tarea, index) => ( 
-          <li>
-            <span>{tarea}</span> 
-            <i
-              className="fa-solid fa-xmark"
-              onClick={() =>
-                setTareas(
-                  tareas.filter((tarea, currentIndex) => index != currentIndex)
-                )
-              } 
+		if (itemList.length == 1) {tasksLeft = 1; mult = ""; yay = ""}
+		if (itemList.length > 1) {tasksLeft = itemList.length; mult = "s"; yay = ""}
 
-            ></i>
-          </li>
-        ))}
-      </ul>
+		return <li className="list-group-item d-flex w-100 align-middle justify-content-between">
+			<small>{tasksLeft} task{mult} left {yay}</small>
+		</li>
+	}
 
-      <div>
-       {tareas.length} {tareas.length >=2 ? "tareas" : "tarea"} </div> 
-    </div>
-  );
+	return (
+		<div className="row justify-content-center">
+			<div className="col-4">
+			<h1 className="mt-5 text-center">minimalist to-do list</h1>
+			<ul className="shadow list-group mt-3">
+				<input 
+					type="text"
+					value={value} 
+					className="list-group-item input-group"
+					placeholder="What do I need to do today?"
+					onChange={(event) => valueChange(event)} 
+					onKeyUp={(event) => {
+						if (event.key === "Enter" && event.target.value !== "") { 
+							setItemList([...itemList, { id: key++, listItem: event.target.value }]);
+							setValue('') 
+						}
+					}}
+				/>
+				{itemList.map(entry => 
+					<li key={entry.id} 
+					className="list-group-item d-flex w-100 align-middle justify-content-between"
+					onMouseOver={() => setVis({id:(entry.id)})} 
+					onMouseLeave={() => setVis({id:null})}
+					>
+					<b>{entry.listItem}</b>
+					{entry.id === vis.id && ( 
+					<span type="button" style={{color: "red"}} onClick={() => {removeItem(entry.id)}}>delete</span>)}
+					</li>)}
+				{taskCounter()}
+			</ul>
+			</div>
+		</div>
+	);
 };
 
-export default Home;
+export default ToDoGen;
