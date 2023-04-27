@@ -15,6 +15,7 @@ body {
 ul {
     padding: 0;
     margin-bottom: 0;
+    margin-top: 3px;
 }
 
 ul li {
@@ -24,6 +25,20 @@ ul li {
     padding: 5px;
 }
 
+.custom-button {
+    position: absolute;
+    right: 1%;
+    background-color: inherit;
+    border: none;
+    color:#1F1D36;
+    
+}
+
+.custom-button:hover {
+    color: #864879;
+    cursor: pointer;
+    z-index: 5;
+}
 h1 {
     margin-top: 5px;
     text-align: center;

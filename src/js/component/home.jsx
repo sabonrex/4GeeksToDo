@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { render } from "react-dom/cjs/react-dom.production.min";
 
 let key = 0
@@ -7,7 +9,7 @@ const ToDoGen = () => {
 
 	const [itemList, setItemList] = useState([]) 
 	const [value, setValue] = useState('') 
-	const [vis, setVis] = useState({id: null}) 
+	const [vis, setVisible] = useState({id: null}) 
 
 
 	const removeItem = (entryId) => {
@@ -52,15 +54,21 @@ const ToDoGen = () => {
 					}}
 				/>
 				{itemList.map(entry => 
+	
 					<li key={entry.id} 
-					className="list-group-item d-flex w-100 align-middle justify-content-between"
-					onMouseOver={() => setVis({id:(entry.id)})} 
-					onMouseLeave={() => setVis({id:null})}
-					>
+					onMouseOver={() => setVisible({id:(entry.id)})}
+					onMouseLeave={() => setVisible({id:null})} >
 					<b>{entry.listItem}</b>
-					{entry.id === vis.id && ( 
-					<span type="button" style={{color: "red"}} onClick={() => {removeItem(entry.id)}}>delete</span>)}
-					</li>)}
+					<button 
+						type="button" 
+						className="custom-button" 
+						onClick={() => {removeItem(entry.id)}}
+						style={vis}
+						>
+						<FontAwesomeIcon className="custom-button" icon={faTrashCan} />
+					</button>
+				</li>
+					)}
 				{taskCounter()}
 			</ul>
 			</div>
