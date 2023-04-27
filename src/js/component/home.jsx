@@ -7,11 +7,10 @@ const Home = () => {
 	return (
 		<>
 			<div className="container-fluid row d-flex justify-content-center align-items-center p-2">
-				<h1 className="row justify-content-center">To-Do List</h1>
-				<ul className="list-container col-12">
+				<h1 className="row justify-content-center">To Do List</h1>
+				<ul className="list-container shadow col-12">
 					<li className="list-title">
 						<input 
-			
 						className="text" 
 						onChange={(e) => setInputValue(e.target.value)} 
 						value={inputValue}
