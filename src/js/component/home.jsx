@@ -28,7 +28,7 @@ const Home = () => {
 						</li>
 						))}
 			</ul>
-				<p><em>{toDoItem.length} task(s) left</em></p>
+				<p><sub>{toDoItem.length} task(s) left</sub></p>
 			</div>
 		</>
 	);
