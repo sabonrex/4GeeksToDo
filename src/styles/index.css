@@ -35,3 +35,6 @@ input {
 li:hover * {
     visibility: visible;
 }
+p {
+    text-align: right;
+}
