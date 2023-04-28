@@ -6,7 +6,7 @@ const Home = () => {
 	const [ toDo, settoDo ] = useState([]);
 	return (
 		<>
-			<div className="container-fluid row d-flex justify-content-center align-items-center p-2">
+		<div className="container-fluid row d-flex justify-content-center align-items-center p-2">
 				<h1 className="row justify-content-center">To Do List</h1>
 				<ul className="list-container shadow col-12">
 					<li className="list-title">
